@@ -40,20 +40,16 @@ class Solution {
     // Function to find equilibrium point in the array.
     public static int equilibriumPoint(long arr[], int n) {
 
-        // Your code here
-    long sum2=0, sum1=0;
-       for(long i : arr)
-       {
-           sum2+= i;
-       }
-       
-       for(int i=0; i<n; i++)
-       {
-           sum1 = sum1+arr[i];
-           if(sum1==sum2) return i+1;
-           sum2= sum2-arr[i];
-           
-       }
-       return -1;
+      if(n==1) return 1;
+        
+        long sum=0,prevSum=0;
+        for(long i:arr) sum+=i;
+        
+        for(int i=0;i<n;i++){
+            sum-=arr[i];
+            if(prevSum==sum) return i+1;
+            prevSum+=arr[i];
+        }
+        return -1;
     }
 }
